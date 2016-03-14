@@ -1,0 +1,79 @@
+<!--
+LED web server
+http://aquaticus.info/webled
+BeagleBone/Angstrom Linux
+-->
+<html>
+<head>
+<title>BeagleBone LED Server</title>
+<style>img { border: 0px }</style> <!-- for IE -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!-- Looks better on smartphones -->
+</head>
+<body>
+<img src="images/imec.jpg">   <!--<img src="images/level100.png">-->
+<br>
+<!--
+<p>
+<a href="?power=0"><img src="images/button0.png"></a>
+<a href="?power=20"><img src="images/button20.png"></a>
+<a href="?power=40"><img src="images/button40.png"></a>
+<a href="?power=60"><img src="images/button60.png"></a>
+<a href="?power=80"><img src="images/button80.png"></a>
+<a href="?power=100"><img src="images/button100.png"></a>
+<p>
+
+ <form action="index">
+  <select name="value">
+    value:<option value="On">On</option>
+    value:<option value="Off">Off</option>
+
+  </select>
+<select name="color">
+   <option value=Loloz">Loloz</option>
+    <option value="Lollita">Lollita</option>
+    <option value="sokara">sokara</option>
+  <option value="barakah">barakah</option>
+  </select>
+
+  <input type="submit" value="Submit">
+-->
+<form action="index" method="get">
+  Led 0 :
+  <button name="value" type="submit" value="led0_on">On</button>
+  <button name="value" type="submit" value="led0_off">Off</button>
+  <br>
+  <br>
+  Led 1 :
+  <button name="value" type="submit" value="led1_on">On</button>
+  <button name="value" type="submit" value="led1_off">Off</button>
+  <br>
+  <br>
+  Led 2 :
+  <button name="value" type="submit" value="led2_on">On</button>
+  <button name="value" type="submit" value="led2_off">Off</button>
+	<br>
+	<br>
+	<form method="get" action="index">
+	      data:<input type="text" data="write here to send" name="data" />		
+              <button type="submit">Press to send in serial port</button>
+	      
+	 </form>
+	 
+	 
+	 		<form method="get" action="index">
+              <fieldset > 
+                 <legend>Select preset</legend>
+                <select name="screen" id="preset">
+                    <option value="0">AMLED 120(x3)x160 TOP</option>
+					<option value="1">AMLED 120(x3)x160 BOT</option>
+					<option value="2">CPT 240x320 GIP</option>
+					<option value="3" selected>QVGA 320x240</option>
+                </select>
+				 <button type="submit">Press to send </button>
+              </fieldset> 
+            </form>
+Mohamed Beltagy
+</form>
+
+</body>
+</html>
