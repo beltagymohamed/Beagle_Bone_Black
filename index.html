@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Zebra Control</title>
+    
+    <link rel="stylesheet" href="jquery.mobile-1.3.2.css"/>
+    <script src="jquery-1.11.3.js"></script>
+    <script src="jquery.mobile-1.3.2.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    
+ 
+</head>
+<body><!-- Home -->
+<div data-role="page" id="page1">
+    <div data-role="content">
+       
+		<div data-role="main" class="ui-content">
+    	    <div data-theme="a" data-role="header">
+                <h3>Presets</h3>
+            </div><!-- /header -->
+			
+			<form method="post" action="demoform.asp">
+              <fieldset data-role="controlgroup" data-mini="true"> 
+                 <legend>Select preset</legend>
+                <select name="preset" id="preset">
+                    <option value="0">AMLED 120(x3)x160 TOP</option>
+					<option value="1">AMLED 120(x3)x160 BOT</option>
+					<option value="2">CPT 240x320 GIP</option>
+					<option value="3" selected>QVGA 320x240</option>
+                </select>
+              </fieldset> 
+            </form>
+		</div>
+		
+        <div data-role="main" class="ui-content">
+    	    <div data-theme="a" data-role="header">
+                <h3>Full Control</h3>
+            </div><!-- /header -->
+            
+            <form method="post" action="demoform.asp">
+              <fieldset data-role="controlgroup" data-mini="true">
+                <legend>Color</legend>
+                <select name="color_select" id="color_select">
+                    <option value="0" selected>Gray</option>
+                    <option value="1">RGB</option>
+                    <option value="2">Red Only</option>
+                    <option value="3">Green Only</option>
+                    <option value="4">Blue Only</option>
+                </select>
+              </fieldset>
+            </form>
+            
+            <form method="post" action="demoform.asp">
+              <fieldset data-role="controlgroup" data-mini="true">
+                 <legend>Color Sequence</legend>
+                <select name="color_seq" id="color_seq">
+                    <option value="0" selected>Rgb</option>
+                    <option value="1">Rbg</option>
+                    <option value="2">Gbr</option>
+                    <option value="3">Grb</option>
+                    <option value="4">Brg</option>
+                    <option value="5">Bgr</option>
+                </select>
+              </fieldset>
+            </form>
+            
+            <form method="post" action="demoform.asp">
+              <fieldset data-role="controlgroup" data-mini="true">
+                 <legend>GIP</legend>
+                <select name="GIP" id="GIP">
+                    <option value="0" selected>No</option>
+                    <option value="1">Yes</option>
+                </select>
+              </fieldset>
+            </form>
+            
+            <form method="post" action="demoform.asp">
+              <fieldset data-role="controlgroup" data-mini="true">
+                 <legend>Direction</legend>
+                <select name="direction" id="direction">
+                    <option value="0" selected>TOP</option>
+                    <option value="1">BOT</option>
+                </select>
+              </fieldset>
+            </form>
+            
+            <form method="post" action="demoform.asp">
+              <fieldset data-role="controlgroup" data-mini="true">
+                 <legend>Display Orientation</legend>
+                <select name="orientation" id="orientation">
+                    <option value="1">Rotated</option>
+                    <option value="0" selected>Not Rotated</option>
+                </select>
+              </fieldset>
+            </form>
+            
+            <form method="post" action="demoform.asp">
+              <fieldset data-role="controlgroup" data-mini="true">
+                 <legend>Display Orientation</legend>
+                <select name="select_lr" id="select_lr">
+                    <option value="1">To Right</option>
+                    <option value="0" selected>To Left</option>
+                </select>
+              </fieldset>
+            </form>
+            
+            <form method="post" action="demoform.asp">
+              <fieldset data-role="controlgroup" data-mini="true">
+                 <legend>Data driver clock frequency</legend>
+                <select name="freq" id="freq">
+                    <option value="0">12 MHz</option>
+                    <option value="1" selected>6 MHz</option>
+                    <option value="2">3 MHz</option>
+                    <option value="3">1.5 MHz</option>
+                    <option value="4">750 kHz</option>
+                    <option value="5">375 kHz</option>
+                    <option value="6">187.5 kHz</option>
+                    <option value="7">93.75 kHz</option>
+                </select>
+              </fieldset>
+            </form>
+
+            <form method="post" action="demoform.asp">
+              <fieldset data-role="controlgroup" data-mini="true">
+                 <legend>Number of subframes</legend>
+                <select name="frame" id="frame">
+                    <option value="1">1 subframe</option>
+                    <option value="4">4 subframes</option>
+                    <option value="9" selected>9 subframes</option>
+                    <option value="12">12 subframes</option>
+                </select>
+              </fieldset>
+            </form>
+            
+            <legend>Display size (Data x Select)</legend>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <input type="text" name="Data" id="Data" value="320" data-mini="true"/>
+                            </div>
+                            <div class="ui-block-b">
+                                <input type="text" name="Select" id="Select" value="240" data-mini="true"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <input id="dimension_button" type="button" name="dimension_button" value="SET" data-mini="true">
+                    </div>
+                </div>
+                
+            <legend>Data driver shift</legend>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <input type="text" name="wait_cnt" id="wait_cnt" value="32" data-mini="true"/>
+                    </div>
+                    <div class="ui-block-b">
+                        <input id="wait_cnt_button" type="button" name="wait_cnt_button" value="SET" data-mini="true">
+                    </div>
+                </div>
+
+        </div>
+        
+        <div data-role="main" class="ui-content">
+            <div data-theme="a" data-role="header">
+            <h3>Video Playback</h3>
+            </div><!-- /header -->
+            
+            <div data-role="main" class="ui-content">
+                <form method="post" action="demoform.asp">
+                  <fieldset data-role="controlgroup" data-mini="true">
+                     <legend>Choose Movie</legend>
+                    <select name="select_button" id="select_button">
+                        <option value="mov0">Dilbert</option>
+                        <option value="mov1">Ball</option>
+                        <option value="mov2">Test patterns</option>
+                        <option value="mov3">Images</option>
+                        <option value="mov4">ImecVid</option>
+                        <option value="mov5">Maus</option>
+                        <option value="mov6">Sunday</option>-->
+                        <option value="mov7">Dilbert_QQVGA</option>-->
+                        <option value="mov8">ball_qqvga</option>-->
+                    </select>
+                  </fieldset>
+                </form>
+            </div>
+                        
+            <div class="ui-grid-b">
+                <div class="ui-block-a">
+                    <input id="play_button" type="button" name="play_button" value="PLAY" data-mini="true">
+                </div>
+                <div class="ui-block-b">
+                    <input id="pause_button" type="button" name="pause_button" value="PAUSE" data-mini="true">
+                </div>
+                <div class="ui-block-c">
+                    <input id="stop_button" type="button" name="stop_button" value="STOP" data-mini="true">
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /page -->
+
+   <!-- Code for socket.io and device orientation handling -->
+    <script>
+    var socket = io.connect();
+    //Send data through socket
+    
+    $(document).ready(function() {
+        
+        $("#dimension_button").click(function() { 
+            socket.emit('display_size', {col:$( "#Data" ).val(),row:$( "#Select" ).val()} );
+        });
+        
+        $("#orientation").click(function() {
+            socket.emit('orientation', $(this).val());
+        });
+        
+        $("#freq").click(function() { 
+            socket.emit('frequency', $(this).val());
+        });
+        
+        $("#color_seq").click(function() { 
+            socket.emit('color_seq', $(this).val());
+        });
+        
+        $("#GIP").click(function() { 
+            socket.emit('gip', $(this).val());
+        });
+        
+        $("#direction").click(function() { 
+            socket.emit('direction', $(this).val());
+        });
+        
+        $("#select_lr").click(function() { 
+            socket.emit('select_lr', $(this).val());
+        });
+        
+        
+        
+        $("#preset").click(function() {
+            if ($(this).val() == '0') {
+                document.getElementById("Data").value = 120;
+                document.getElementById("Select").value = 160;
+            }
+            else if ($(this).val() == '1') {
+                document.getElementById("Data").value = 120;
+                document.getElementById("Select").value = 160;
+            }
+            else if ($(this).val() == '2') {
+                document.getElementById("Data").value = 240;
+                document.getElementById("Select").value = 320;
+            }
+            else if ($(this).val() == '3') {
+                document.getElementById("Data").value = 320;
+                document.getElementById("Select").value = 240;
+            }
+            socket.emit('preset', $(this).val()); 
+        });
+        
+        $("#color_select").click(function() {
+            socket.emit('color_select', $(this).val());
+        });
+        
+        $("#frame").click(function() { 
+            socket.emit('subframe', $(this).val());
+        });
+        
+        $( "#wait_cnt_button" ).click(function() { 
+            socket.emit('wait', $( "#wait_cnt" ).val() );
+        });
+        
+        $( "#play_button" ).click(function() { 
+            socket.emit('play', "on");
+        });
+        
+         $( "#stop_button" ).click(function() { 
+            socket.emit('stop', "on");
+        });
+        
+        $( "#pause_button" ).click(function() { 
+            socket.emit('pause', "on");
+        });
+        
+        $( "#select_button" ).click(function() { 
+            socket.emit('select', $(this).val());
+        });
+    }); 
+    
+    </script>
+</body>
+</html>
