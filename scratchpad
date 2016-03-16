@@ -1,2 +1,11 @@
 import re
 re.sub('(StartNum)(.*)(/StartNum)', r"\1boop\3", 'StartNumbworp/StartNum')  
+
+
+>>> Variable = "The sun shines, that's fine [not, for, everyone] and if it rains,
+                it Will Be better."
+>>> chunks = Variable.replace('[','[/').replace(']','/]').split('/')
+>>> ''.join(sen.replace(',','') if i%2 else sen for i, sen in enumerate(chunks))
+"The sun shines, that's fine [not for everyone] and if it rains, it Will Be 
+ better." 
+ 
