@@ -9,3 +9,6 @@ re.sub('(StartNum)(.*)(/StartNum)', r"\1boop\3", 'StartNumbworp/StartNum')
 "The sun shines, that's fine [not for everyone] and if it rains, it Will Be 
  better." 
  
+ 
+Variable =re.sub("name=\"preset[^]]*/select", lambda x:x.group(0).replace('selected',''), html)
+print Variable
