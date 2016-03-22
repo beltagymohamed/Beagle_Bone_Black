@@ -14,11 +14,7 @@ class Server(object):
   preset_value_0 = color_select_value_0 = color_seq_value_0 = GIP_value_0 = direction_value_0 = orientation_value_0= select_lr_value_0 = freq_value_0 = frame_value_0 = col_value_0 = row_value_0 = wait_cnt_value_0 =''
   preset_value_1 = color_select_value_1 = color_seq_value_1 = GIP_value_1 = direction_value_1 = orientation_value_1= select_lr_value_1 = freq_value_1 = frame_value_1 = col_value_1 = row_value_1 = wait_cnt_value_1 =''
   preset_value_2 = color_select_value_2 = color_seq_value_2 = GIP_value_2 = direction_value_2 = orientation_value_2= select_lr_value_2 = freq_value_2 = frame_value_2 = col_value_2 = row_value_2 = wait_cnt_value_2 =''
-  col_value_old = row_value_old =  wait_cnt_value_old=''
-  
-  col_value_old = row_value_old =  wait_cnt_value_old=''
-  
-  col_value_old = row_value_old =  wait_cnt_value_old=''
+  col_value_old = row_value_old =  wait_cnt_value_old = save_settings_value = ''
   
   def index(self,preset='',color_select='',color_seq='',GIP='',direction ='',orientation='', select_lr='',freq='',frame='',col='',row='',wait_cnt='',save_settings=''):
     
@@ -52,7 +48,8 @@ class Server(object):
 
     
     if save_settings != '':
-      if save_settings== '0':
+      self.save_settings_value = str(save_settings) 
+      if self.save_settings_value[0]== '0':
 	self.preset_value_0 = self.preset_value
 	self.color_select_value_0 = self.color_select_value
 	self.color_seq_value_0 = self.color_seq_value
@@ -66,7 +63,7 @@ class Server(object):
 	self.row_value_0 = self.row_value
 	self.wait_cnt_value_0 = self.wait_cnt_value
 	print"saving settings"	
-      elif save_settings =='1':
+      elif self.save_settings_value[0] =='1':
 	prest= self.preset_value_0
 	color_select=self.color_select_value_0
 	color_seq=self.color_seq_value_0
@@ -79,7 +76,7 @@ class Server(object):
 	col= self.col_value_0
 	row= self.row_value_0
 	wait_cnt = self.wait_cnt_value_0
-      elif save_settings== '2':
+      elif self.save_settings_value[0]== '2':
 	self.preset_value_1 = self.preset_value
 	self.color_select_value_1 = self.color_select_value
 	self.color_seq_value_1 = self.color_seq_value
@@ -93,7 +90,7 @@ class Server(object):
 	self.row_value_1 = self.row_value
 	self.wait_cnt_value_1 = self.wait_cnt_value
 	print"saving settings"
-      elif save_settings =='3':
+      elif self.save_settings_value[0] =='3':
 	prest= self.preset_value_1
 	color_select=self.color_select_value_1
 	color_seq=self.color_seq_value_1
@@ -106,7 +103,7 @@ class Server(object):
 	col= self.col_value_1
 	row= self.row_value_1
 	wait_cnt = self.wait_cnt_value_1
-      elif save_settings== '4':
+      elif  self.save_settings_value[0] == '4':
 	self.preset_value_2 = self.preset_value
 	self.color_select_value_2 = self.color_select_value
 	self.color_seq_value_2 = self.color_seq_value
@@ -120,7 +117,7 @@ class Server(object):
 	self.row_value_2 = self.row_value
 	self.wait_cnt_value_2 = self.wait_cnt_value
 	print"saving settings"
-      elif save_settings =='5':
+      elif self.save_settings_value[0]  =='5':
 	prest= self.preset_value_2
 	color_select=self.color_select_value_2
 	color_seq=self.color_seq_value_2
@@ -133,6 +130,8 @@ class Server(object):
 	col= self.col_value_2
 	row= self.row_value_2
 	wait_cnt = self.wait_cnt_value_2
+	
+    html=selection("_save_settings",self.save_settings_value, html)
     
     
     
