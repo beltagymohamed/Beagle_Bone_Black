@@ -1,6 +1,6 @@
-#!/usr/bin/python
 # BeagleBone web server
-# BeagleBone/Angstrom Linux
+# BeagleBone/Debian Linux
+#Author: Mohamed Beltagy beltagymohamed@gmail.com
 
 import cherrypy
 import os.path
