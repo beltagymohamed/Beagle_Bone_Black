@@ -1,0 +1,149 @@
+<!--
+LED web server
+http://aquaticus.info/webled
+BeagleBone/Angstrom Linux
+-->
+<html>
+<head>
+<title>BeagleBone LED Server</title>
+<style>img { border: 0px }</style> <!-- for IE -->
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/> <!-- Looks better on smartphones -->
+</head>
+<body>
+<img src='images/imec.jpg'>   
+<br>
+
+<form method='get' action='index'>
+  <fieldset > 
+      <legend>Select preset</legend>
+    <select name='preset' >
+	<option value='0'>AMLED 120(x3)x160 TOP</option>
+	<option value='1'>AMLED 120(x3)x160 BOT</option>
+	<option value='2' selected >CPT 240x320 GIP</option>
+	<option value='3' >QVGA 320x240</option>
+    </select>
+    <button type='submit'>Press to send </button>
+  </fieldset> 
+</form>
+<form method='post' action='index'>
+  <fieldset >
+    <legend>Color</legend>
+    <select name='color_select'>
+	<option value='0' selected>Gray</option>
+	<option value='1'>RGB</option>
+	<option value='2'>Red Only</option>
+	<option value='3'>Green Only</option>
+	<option value='4'>Blue Only</option>
+    </select>
+    <button type='submit'>Press to send </button>
+  </fieldset>
+</form>
+
+<form method='post' action='index'>
+  <fieldset >
+    <legend>Color Sequence</legend>
+    <select name='color_seq' >
+	<option value='0' selected>Rgb</option>
+	<option value='1'>Rbg</option>
+	<option value='2'>Gbr</option>
+	<option value='3'>Grb</option>
+	<option value='4'>Brg</option>
+	<option value='5'>Bgr</option>
+    </select>
+    <button type='submit'>Press to send </button>
+  </fieldset>
+</form>
+
+<form method='post' action='index'>
+  <fieldset >
+      <legend>GIP</legend>
+    <select name='GIP' id='GIP'>
+	<option value='0' selected>No</option>
+	<option value='1'>Yes</option>
+    </select>
+    <button type='submit'>Press to send </button>
+  </fieldset>
+</form>
+ 
+<form method='post' action='index'>
+  <fieldset >
+      <legend>Direction</legend>
+    <select name='direction' >
+	<option value='0' selected>TOP</option>
+	<option value='1'>BOT</option>
+    </select>
+    <button type='submit'>Press to send </button>
+  </fieldset>
+</form>
+ <form method='post' action='index'>
+  <fieldset >
+      <legend>Display Orientation</legend>
+    <select name='orientation' >
+	<option value='1'>Rotated</option>
+	<option value='0' selected>Not Rotated</option>
+    </select>
+    <button type='submit'>Press to send </button>
+  </fieldset>
+</form>	
+
+<form method='post' action='index'>
+  <fieldset >
+      <legend>Display Orientation</legend>
+    <select name='select_lr' id='select_lr'>
+	<option value='1'>To Right</option>
+	<option value='0' selected>To Left</option>
+    </select>
+    <button type='submit'>Press to send </button>
+  </fieldset>
+</form>
+
+ <form method='post' action='index'>
+  <fieldset >
+      <legend>Data driver clock frequency</legend>
+    <select name='freq'  value ='7'>
+	<option value='0'>12 MHz</option>
+	<option value='1' >6 MHz</option>
+	<option value='2'>3 MHz</option>
+	<option value='3' >1.5 MHz</option>
+	<option value='4'>750 kHz</option>
+	<option value='5'>375 kHz</option>
+	<option value='6'>187.5 kHz</option>
+	<option value='7'>93.75 kHz</option>
+    </select>
+    <button type='submit'>Press to send </button>
+  </fieldset>
+</form>
+
+<form method='post' action='index'>
+  <fieldset >
+      <legend>Number of subframes</legend>
+    <select name='frame' id='frame' >
+	<option value='1'>1 subframe</option>
+	<option value='4'>4 subframes</option>
+	<option value='9' selected>9 subframes</option>
+	<option value='12'>12 subframes</option>
+    </select>
+    <button type='submit'>Press to send </button>
+  </fieldset>
+</form>
+
+
+<form method='get' action='index'>
+<legend>Display size (Col x Row)</legend> 
+  <input type='text' name='col' id='Data' value='320'/>
+  <input type='text' name='row' id='Select' value='240' data-mini='true'/>
+  <button type='submit'>SET </button>
+</form> 
+
+<form method='get' action='index'>
+<legend>Data driver shift</legend>
+  <input type='text' name='wait_cnt' id='wait_cnt' value='32' data-mini='true'/>
+  <button type='submit'>SET </button>
+</form> 
+
+
+Mohamed Beltagy
+</form>
+
+</body>
+</html>

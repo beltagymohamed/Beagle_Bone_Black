@@ -12,3 +12,9 @@ re.sub('(StartNum)(.*)(/StartNum)', r"\1boop\3", 'StartNumbworp/StartNum')
  
 Variable =re.sub("name=\"preset[^]]*/select", lambda x:x.group(0).replace('selected',''), html)
 print Variable
+
+ preset_selection= "value=\"%s\"" % preset
+ Variable =re.sub("name=\"preset[^]]*/select", lambda x:x.group(0).replace('selected',''), html)
+ Variable1 =re.sub("name=\"preset[^]]*/select", lambda x:x.group(0).replace(preset_selection,preset_selection +' selected'), Variable)
+ #print Variable1
+ html=Variable1
