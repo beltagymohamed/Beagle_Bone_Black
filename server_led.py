@@ -1,7 +1,4 @@
 # Beagle_Bone_Black
-#!/usr/bin/python
-# BeagleBone LED web server
-# http://aquaticus.info/beaglebone-web-led
 # BeagleBone/Angstrom Linux
 
 import cherrypy
@@ -51,28 +48,6 @@ class ServerLed(object):
 			#ser.write(b'3D' + chr_data(120) + chr_data(160) + ';');
 			ser.write(b'3W' + chr("001110") + ';');
 
-		 
-		 
-	
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-	
-		
 	if self.led_value== "led0_on":
 	    GPIO.output("P8_10", GPIO.HIGH)
 	    time.sleep(2)
