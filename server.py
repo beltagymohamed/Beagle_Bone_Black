@@ -138,6 +138,7 @@ class Server(object):
     
     preset_value= str(preset)
     if preset_value != '' :
+      self.preset_value=str(preset)
       if preset_value == "0_preset" :
 	  
 	  ser.write(b'3'+'R' + chr(1) + chr(3) + chr(1) + b';')
@@ -175,12 +176,12 @@ class Server(object):
 	  ser.write('3' + 'S' + '9' + ';')
 	  ser.write('3' + 'D' + chr_data(320) + chr_data(240) + ';')
 	  ser.write('3' + 'W' + bchr("010000") + ';') # is not yet correct
-      self.preset_value=str(preset)
     html=selection("_preset_value",self.preset_value, html) 
     
     
     color_select_value=str(color_select)
     if color_select_value != '' :
+      self.color_select_value=str(color_select)
       if  (color_select_value == '0_color_select'): 
 	  ser.write('3' + 'A' + bchr("00000000") + ';')
       elif(color_select_value == '1_color_select'):
@@ -191,12 +192,12 @@ class Server(object):
 	  ser.write('3' + 'A' + bchr("00000101") + ';')
       elif(color_select_value == '4_color_select'):
 	  ser.write('3' + 'A' + bchr("00001001") + ';')
-      self.color_select_value=str(color_select)
     html=selection("_color_select_value",self.color_select_value, html)
 
     
     color_seq_value=str(color_seq)
     if color_seq_value != '':
+      self.color_seq_value=str(color_seq)
       if (color_seq_value == '0_color_seq'):
 	ser.write('3' + 'B' + bchr("00000000") + ';') 
       elif (color_seq_value == '1_color_seq'):
@@ -209,60 +210,38 @@ class Server(object):
 	ser.write('3' + 'B' + bchr("00000100") + ';') 
       elif (color_seq_value == '5_color_seq'):
 	ser.write('3' + 'B' + bchr("00000101") + ';') 
-      self.color_seq_value=str(color_seq)
     html=selection("_color_seq",self.color_seq_value, html)
     
     
     if GIP != '':
       self.GIP_value=str(GIP)
-      print self.GIP_value
-      if self.GIP_value=='0_gip':
-	str_sent = '3' + 'G' + chr(0) + ';'
-	ser.write(str_sent);
-	print ("%s") % str_sent
-      elif self.GIP_value=='1_gip':
-	str_sent = '3' + 'G' + chr(1) + ';'
-	ser.write(str_sent);
-	print ("%s") % str_sent
+      str_sent = '3' + 'G' + chr(int(self.GIP_value[0])) + ';'
+      ser.write(str_sent);
+      print ("%s") % str_sent
     html=selection("_gip",self.GIP_value, html)
       
     
     if direction!= '':
       self.direction_value=str(direction)
-      if self.direction_value == '0_direction':  
-	str_sent = '3' + 'T' + chr(0) + ';'
-	ser.write(str_sent);
-	print ("%s") % str_sent
-      elif self.direction_value == '1_direction':
-	str_sent = '3' + 'T' + chr(1) + ';'
-	ser.write(str_sent);
-	print ("%s") % str_sent
+      str_sent = '3' + 'T' + chr(int(self.direction_value[0])) + ';'
+      ser.write(str_sent);
+      print ("%s") % str_sent
     html=selection("_direction",self.direction_value, html)
     
     
     if orientation != '':
       self.orientation_value=str(orientation)
-      if self.orientation_value == '0_orientation': 
-	str_sent = '3' + 'R' + chr(0) + ';'
-	ser.write(str_sent);
-	print ("%s") % str_sent
-      elif self.orientation_value == '1_orientation':
-	str_sent = '3' + 'R' + chr(1) + ';'
-	ser.write(str_sent);
-	print ("%s") % str_sent
+      str_sent = '3' + 'R' + chr(int(self.orientation_value[0])) + ';'
+      ser.write(str_sent);
+      print ("%s") % str_sent
     html=selection("_orientation",self.orientation_value, html)
     
     
     if select_lr != '':
       self.select_lr_value=str(select_lr)
-      if self.select_lr_value == '0_select_lr': 
-	str_sent = '3' + 'C' + chr(0) + ';'
-	ser.write(str_sent);
-	print ("%s") % str_sent
-      elif self.select_lr_value == '1_select_lr':
-	str_sent = '3' + 'C' + chr(1) + ';'
-	ser.write(str_sent);
-	print ("%s") % str_sent
+      str_sent = '3' + 'C' + chr(int(self.select_lr_value[0])) + ';'
+      ser.write(str_sent);
+      print ("%s") % str_sent
     html=selection("_select_lr",self.select_lr_value, html)
     
     
